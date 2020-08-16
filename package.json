@@ -1,0 +1,16 @@
+{
+  "name": "test-bluetooth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "microbit-web-bluetooth": "^0.6.0",
+    "three": "^0.119.1"
+  }
+}
