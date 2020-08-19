@@ -3,11 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Wally Bluetooth Microbit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-<h1>Hello Microbit</h1>
-<div id="info">No device paired yet</div>
-<button id="start">Start</button>
+<div class="main">
+  <h1>Bluetooth Wally - Step1</h1>
+  <p>
+    We are leveraging the bluetooth web api to connect with the bbc:microbit and then rotate Wally thanks to the
+    microbit
+    accelerometer.
+  </p>
+  <p>Let's try it!</p>
+    <div class="instruction">
+      <p class="title">Instruction 1</p>
+      <p>You need to have a bluetooth receiver on your PC/Mac and it should be activated.</p>
+    </div>
+    <div class="instruction">
+      <p class="title">Instruction 2</p>
+      <p>Clic the <strong>start</strong> button to pair a running, bluetooth enabled BBC:Microbit.</p>
+      <p>To enable you BBC:Microbit for Bluetooth, download this <a href="#">.hex file</a> and copy it into you microbit.
+      </p>
+    </div>
+  <div class="interactive">
+    <div class="button" id="start">Start</div>
+    <div id="pairingFeedback">
+      <img width="100" src="img/microbit.png" alt="">
+      <img width="80" src="img/bluetooth.gif" alt="">
+      <img width="200" src="img/pc.jpg" alt="">
+    </div>
+    <div id="info"></div>
+    <div id="errorMessage"></div>
+    <div id="viewer"></div>
+  </div>
+</div>
 <script type="module" src="./main.js"></script>
 </body>
 </html>

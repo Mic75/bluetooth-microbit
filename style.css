@@ -1,0 +1,77 @@
+
+html {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.main {
+    width: 960px;
+    padding: 50px;
+    margin: auto;
+}
+
+.main h1 {
+    margin-top: 0;
+}
+
+h1, h2 {
+    color: #287AA9;
+}
+
+.button {
+    min-width: 80px;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    background-color: #287AA9;
+    display: inline-block;
+    border-radius: 3px 3px 3px;
+    user-select: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 300ms;
+}
+
+.button:hover {
+    background-color: #6eb5dd;
+    transition: background-color 300ms;
+    border-radius: 3px;
+}
+
+.instruction {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    box-shadow: grey 1px 1px 3px;
+    background-color: white;
+}
+
+.instruction p {
+    margin: 0;
+}
+
+.instruction .title {
+    margin-bottom: 10px;
+    font-size: larger;
+}
+
+.interactive {
+    text-align: center;
+}
+
+.interactive img {
+    vertical-align: middle;
+}
+
+#pairingFeedback {
+    display: none;
+}
+
+#errorMessage {
+    color: red;
+    font-weight: 600;
+}
+
+.interactive #info {
+    color: green;
+}

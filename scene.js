@@ -1,6 +1,6 @@
 import * as THREE from './node_modules/three/build/three.module.js';
 import TWEEN from "./node_modules/@tweenjs/tween.js/dist/tween.esm.js";
-import {HALF_PI} from "./constants.js";
+import {HALF_PI, viewerDimension} from "./constants.js";
 
 var camera, scene, renderer;
 var geometry, material, mesh;
@@ -16,12 +16,12 @@ let rotationTarget = {
 
 let tween = {update(){}};
 
-export function init() {
+export function init(container) {
 
   camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
 
   camera.position.z = 1;
-  camera.position.y = 1;
+  camera.position.y = 0.5;
   camera.lookAt(0,0,0);
   scene = new THREE.Scene();
 
@@ -33,8 +33,8 @@ export function init() {
 
 
   renderer = new THREE.WebGLRenderer( { antialias: true } );
-  renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );
+  renderer.setSize( viewerDimension, viewerDimension );
+  container.appendChild( renderer.domElement );
 }
 
 export function updateMeshRotation(accelData){
