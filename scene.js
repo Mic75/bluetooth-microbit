@@ -1,6 +1,8 @@
 import * as THREE from './node_modules/three/build/three.module.js';
 import TWEEN from "./node_modules/@tweenjs/tween.js/dist/tween.esm.js";
 import {HALF_PI, viewerDimension} from "./constants.js";
+import { GLTFLoader } from './gltfloader.js';
+
 
 var camera, scene, renderer;
 var geometry, material, mesh;
@@ -18,10 +20,9 @@ let tween = {update(){}};
 
 export function init(container) {
 
-  camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+  camera = new THREE.OrthographicCamera( -50, 50, -50, 50, 0.1, 1000 );
 
-  camera.position.z = 1;
-  camera.position.y = 0.5;
+  camera.position.y = 0;
   camera.lookAt(0,0,0);
   scene = new THREE.Scene();
 
@@ -29,6 +30,8 @@ export function init(container) {
   material = new THREE.MeshNormalMaterial();
 
   mesh = new THREE.Mesh( geometry, material );
+  mesh.scale.x = mesh.scale.y = mesh.scale.z = 60;
+  mesh.position.z = -50;
   scene.add( mesh );
 
 
