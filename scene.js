@@ -1,5 +1,5 @@
-import * as THREE from './three.module.js';
-import TWEEN from "./tween.esm.js";
+import * as THREE from './node_modules/three/build/three.module.js';
+import TWEEN from './node_modules/@tweenjs/tween.js/dist/tween.esm.js';
 import {HALF_PI, viewerDimension} from "./constants.js";
 import { GLTFLoader } from './gltfloader.js';
 import { OrbitControls } from './orbit.js';

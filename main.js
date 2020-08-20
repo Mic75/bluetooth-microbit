@@ -1,4 +1,4 @@
-import { requestMicrobit, getServices } from './microbit.esm.js';
+import { requestMicrobit, getServices } from './node_modules/microbit-web-bluetooth/dist/microbit.esm.js';
 import {infoID, startID, viewerID, pairingFeedbackID, errorMessageID} from './constants.js';
 import {init as initScene, animate, updateMeshRotation} from "./scene.js";
 
