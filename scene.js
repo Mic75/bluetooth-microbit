@@ -1,8 +1,8 @@
-import * as THREE from './three.module.js';
-import TWEEN from "./tween.esm.js";
+import * as THREE from './lib/three.module.js';
+import TWEEN from "./lib/tween.esm.js";
 import {HALF_PI, viewerDimension} from "./constants.js";
-import { GLTFLoader } from './gltfloader.js';
-import { OrbitControls } from './orbit.js';
+import { GLTFLoader } from './lib/gltfloader.js';
+import { OrbitControls } from './lib/orbit.js';
 
 let camera, scene, renderer;
 let wally;
