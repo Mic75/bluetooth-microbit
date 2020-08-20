@@ -5,6 +5,6 @@ export const viewerID = 'viewer';
 export const pairingFeedbackID = 'pairingFeedback';
 export const errorMessageID = 'errorMessage';
 
-export const viewerDimension = 500;
+export const viewerDimension = 350;
 
 export const HALF_PI = Math.PI / 2;
