@@ -2,10 +2,10 @@ import * as THREE from './node_modules/three/build/three.module.js';
 import TWEEN from "./node_modules/@tweenjs/tween.js/dist/tween.esm.js";
 import {HALF_PI, viewerDimension} from "./constants.js";
 import { GLTFLoader } from './gltfloader.js';
-
+import { OrbitControls } from './orbit.js';
 
 var camera, scene, renderer;
-var geometry, material, mesh;
+let wally;
 let rotation = {
   x: 0.0,
   z: 0.0
@@ -20,35 +20,43 @@ let tween = {update(){}};
 
 export function init(container) {
 
-  camera = new THREE.OrthographicCamera( -50, 50, -50, 50, 0.1, 1000 );
+  camera = new THREE.OrthographicCamera( -5, 5, -5, 5, 0.1, 1000 );
 
-  camera.position.y = 0;
+  camera.position.z = 10;
   camera.lookAt(0,0,0);
   scene = new THREE.Scene();
 
-  geometry = new THREE.BoxGeometry( 0.8, 0.05, 0.632 );
-  material = new THREE.MeshNormalMaterial();
+  const light = new THREE.AmbientLight(0xb3b3b3);
+  scene.add(light);
 
-  mesh = new THREE.Mesh( geometry, material );
-  mesh.scale.x = mesh.scale.y = mesh.scale.z = 60;
-  mesh.position.z = -50;
-  scene.add( mesh );
+  var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+  directionalLight.position.z = -1;
+  scene.add( directionalLight );
 
+  const glTfLoader = new GLTFLoader()
+  glTfLoader.load( './wally.glb',(gltf) => {
+    wally = gltf.scene
+    scene.add(wally);
+  }, undefined, (error) => {
+    console.error(error);
+  });
 
   renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setSize( viewerDimension, viewerDimension );
+  const controls = new OrbitControls( camera, renderer.domElement );
   container.appendChild( renderer.domElement );
+  controls.update();
 }
 
 export function updateMeshRotation(accelData){
-  rotationTarget.z =   -(accelData.x * HALF_PI) / 1.024;
+  rotationTarget.z =   (accelData.x * HALF_PI) / 1.024;
   rotationTarget.x = (accelData.y * HALF_PI) / 1.024;
   tween = new TWEEN.Tween(rotation)
     .to(rotationTarget, 200)
     .easing(TWEEN.Easing.Quadratic.Out)
     .onUpdate(() => {
-      mesh.rotation.z = rotation.z;
-      mesh.rotation.x = rotation.x;
+      wally.rotation.z = rotation.z;
+      wally.rotation.x = rotation.x;
     })
     .start();
 }
