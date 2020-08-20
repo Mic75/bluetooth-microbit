@@ -1,10 +1,10 @@
-import * as THREE from './node_modules/three/build/three.module.js';
-import TWEEN from "./node_modules/@tweenjs/tween.js/dist/tween.esm.js";
+import * as THREE from './three.module.js';
+import TWEEN from "./tween.esm.js";
 import {HALF_PI, viewerDimension} from "./constants.js";
 import { GLTFLoader } from './gltfloader.js';
 import { OrbitControls } from './orbit.js';
 
-var camera, scene, renderer;
+let camera, scene, renderer;
 let wally;
 let rotation = {
   x: 0.0,
@@ -50,7 +50,7 @@ export function init(container) {
 
 export function updateMeshRotation(accelData){
   rotationTarget.z =   (accelData.x * HALF_PI) / 1.024;
-  rotationTarget.x = (accelData.y * HALF_PI) / 1.024;
+  rotationTarget.x = -(accelData.y * HALF_PI) / 1.024;
   tween = new TWEEN.Tween(rotation)
     .to(rotationTarget, 200)
     .easing(TWEEN.Easing.Quadratic.Out)
