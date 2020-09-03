@@ -20,7 +20,7 @@ let tween = {update(){}};
 
 export function init(container) {
 
-  camera = new THREE.OrthographicCamera( -5, 5, -5, 5, 0.1, 1000 );
+  camera = new THREE.OrthographicCamera( -5, 5, 5, -5, 0.1, 1000 );
 
   camera.position.z = 10;
   camera.lookAt(0,0,0);
